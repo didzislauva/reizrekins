@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Advanced Math Exercises Generator</title>
+<title>Matemātikas uzdevumu veidotājs</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <style>
   * {
@@ -334,30 +334,30 @@
 
 <div class="container">
   <div class="header">
-    <h1>🧮 Advanced Math Generator</h1>
-    <p>Create customized math exercises with multiple difficulty levels</p>
+    <h1>🧮 Matemātikas uzdevumu veidotājs</h1>
+    <p>Izveido matemātikas uzdevumus ar dažādām grūtības pakāpēm</p>
   </div>
 
   <div class="content">
     <div class="exercise-type-selector">
       <div class="type-card active" data-type="multiplication">
-        <h3>🔢 Basic Multiplication</h3>
-        <p>Simple multiplication problems with one blank position. Perfect for learning times tables.</p>
+        <h3>🔢 Vienkārša reizināšana</h3>
+        <p>Reizrēķina treniņam.</p>
       </div>
 
       <div class="type-card" data-type="mixed">
-        <h3>➕ Mixed Operations</h3>
-        <p>Multiplication combined with addition or subtraction. Great for order of operations practice.</p>
+        <h3>➕ Saistītais pieraksts</h3>
+        <p>Reizināšana kombinēta ar saskaitīšanu un atņemšanu.Matemātisko darbību secības treniņš.</p>
       </div>
 
       <div class="type-card" data-type="parentheses">
-        <h3>🔤 Advanced with Parentheses</h3>
-        <p>Complex expressions with parentheses and multiple operations. Challenge mode!</p>
+        <h3>🔤 Saistītais pieraksts ar iekavām</h3>
+        <p>Reizināšana, saskaitīšana un atņemšana izmantojot iekavas.</p>
       </div>
 
       <div class="type-card" data-type="ratios">
-        <h3>📊 Ratios & Proportions</h3>
-        <p>Equivalent fractions and proportion problems. Learn about ratios and cross multiplication.</p>
+        <h3>📊 Attiecības un proporcijas</h3>
+        <p>Darbības ar daļām. Proporicijas un krusteniskā reizināšana</p>
       </div>
     </div>
 
@@ -365,11 +365,11 @@
       <div id="multiplication-controls" class="control-set">
         <div class="control-group">
           <div class="form-group">
-            <label for="multNumbers">Multiplication Numbers:</label>
-            <input id="multNumbers" type="text" value="3,4,5,6,7,8,9" placeholder="e.g., 2,3,4,5,6,7,8,9" />
+            <label for="multNumbers">Reizināšanā izmantotie skaitļi:</label>
+            <input id="multNumbers" type="text" value="1,2,3,4,5,6,7,8,9,10" placeholder="e.g., 2,3,4,5,6,7,8,9" />
           </div>
           <div class="form-group">
-            <label for="exerciseCount">Number of Exercises:</label>
+            <label for="exerciseCount">Uzdevumu skaits:</label>
             <input id="exerciseCount" type="number" value="12" min="1" max="50" />
           </div>
         </div>
@@ -378,15 +378,15 @@
       <div id="mixed-controls" class="control-set hidden">
         <div class="control-group">
           <div class="form-group">
-            <label for="mixedMultNumbers">Multiplication Numbers:</label>
-            <input id="mixedMultNumbers" type="text" value="2,3,4,5,6,7,8,9" />
+            <label for="mixedMultNumbers">Reizināšanā izmantotie skaitļi:</label>
+            <input id="mixedMultNumbers" type="text" value="1,2,3,4,5,6,7,8,9,10" />
           </div>
           <div class="form-group">
-            <label for="addSubNumbers">Addition/Subtraction Numbers:</label>
+            <label for="addSubNumbers">Saskaitīšanai un starpībai izmantotie skaitļi:</label>
             <input id="addSubNumbers" type="text" value="1,2,3,4,5,6,7,8,9,10" />
           </div>
           <div class="form-group">
-            <label for="mixedCount">Number of Exercises:</label>
+            <label for="mixedCount">Uzdevumu skaits:</label>
             <input id="mixedCount" type="number" value="12" min="1" max="50" />
           </div>
         </div>
