@@ -395,15 +395,15 @@
       <div id="parentheses-controls" class="control-set hidden">
         <div class="control-group">
           <div class="form-group">
-            <label for="parentMultNumbers">Multiplication Numbers:</label>
-            <input id="parentMultNumbers" type="text" value="2,3,4,5,6,7,8,9" />
+            <label for="parentMultNumbers">Reizināšanai izmantotie skaitļi:</label>
+            <input id="parentMultNumbers" type="text" value="1,2,3,4,5,6,7,8,9,10" />
           </div>
           <div class="form-group">
-            <label for="parentAddSubNumbers">Addition/Subtraction Numbers:</label>
+            <label for="parentAddSubNumbers">Saskaitīšanai un starpībai izmantotie skaitļi:</label>
             <input id="parentAddSubNumbers" type="text" value="1,2,3,4,5,6,7,8,9,10" />
           </div>
           <div class="form-group">
-            <label for="parentCount">Number of Exercises:</label>
+            <label for="parentCount">Uzdevumu skaits:</label>
             <input id="parentCount" type="number" value="12" min="1" max="50" />
           </div>
         </div>
@@ -412,44 +412,44 @@
       <div id="ratios-controls" class="control-set hidden">
         <div class="control-group">
           <div class="form-group">
-            <label for="ratioNumerators">Numerator Numbers:</label>
+            <label for="ratioNumerators">Skaitītājā izmantotie skaitļi:</label>
             <input id="ratioNumerators" type="text" value="1,2,3,4,5,6,8,9,10,12" />
           </div>
           <div class="form-group">
-            <label for="ratioDenominators">Denominator Numbers:</label>
+            <label for="ratioDenominators">Saucējā izmantotie skaitļi:</label>
             <input id="ratioDenominators" type="text" value="2,3,4,5,6,8,9,10,12,15,16,18,20" />
           </div>
           <div class="form-group">
-            <label for="ratioCount">Number of Exercises:</label>
+            <label for="ratioCount">Uzdevumu skaits:</label>
             <input id="ratioCount" type="number" value="12" min="1" max="50" />
           </div>
         </div>
       </div>
 
       <button class="generate-btn" onclick="generateExercises()">
-        ✨ Generate Exercises
+        ✨ Izveidot uzdevumus
       </button>
     </div>
 
     <div id="exercisesContainer" class="exercises-container hidden">
       <div class="exercises-header">
-        <h2>Your Math Exercises</h2>
-        <p>Fill in the blanks with the correct numbers</p>
+        <h2>Izveidotie uzdevumu</h2>
+        <p>Kāds ir tukšajā vietā nepieciešamais skaitlis?</p>
       </div>
       <div id="exercisesList" class="exercises-grid"></div>
 
       <div class="download-section">
-        <h3 style="color: #333; margin-bottom: 10px;">📥 Download Your Exercises</h3>
-        <p style="color: #666; margin-bottom: 15px;">Save your exercises in your preferred format</p>
+        <h3 style="color: #333; margin-bottom: 10px;">📥 Lejuplādē uzdevumus</h3>
+        <p style="color: #666; margin-bottom: 15px;">Izvēlies sev tīkamāko faila formātu</p>
         <div class="download-buttons">
           <button class="download-btn pdf" onclick="downloadPDF()">
-            📄 Download PDF
+            📄 Lejuplādē PDF
           </button>
           <button class="download-btn word" onclick="downloadWord()">
-            📝 Download Word
+            📝 Lejuplādē Word
           </button>
           <button class="download-btn txt" onclick="downloadTXT()">
-            📋 Download TXT
+            📋 Lejuplādē TXT
           </button>
         </div>
       </div>
