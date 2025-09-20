@@ -354,6 +354,11 @@
         <h3>🔤 Advanced with Parentheses</h3>
         <p>Complex expressions with parentheses and multiple operations. Challenge mode!</p>
       </div>
+
+      <div class="type-card" data-type="ratios">
+        <h3>📊 Ratios & Proportions</h3>
+        <p>Equivalent fractions and proportion problems. Learn about ratios and cross multiplication.</p>
+      </div>
     </div>
 
     <div class="controls">
@@ -400,6 +405,23 @@
           <div class="form-group">
             <label for="parentCount">Number of Exercises:</label>
             <input id="parentCount" type="number" value="12" min="1" max="50" />
+          </div>
+        </div>
+      </div>
+
+      <div id="ratios-controls" class="control-set hidden">
+        <div class="control-group">
+          <div class="form-group">
+            <label for="ratioNumerators">Numerator Numbers:</label>
+            <input id="ratioNumerators" type="text" value="1,2,3,4,5,6,8,9,10,12" />
+          </div>
+          <div class="form-group">
+            <label for="ratioDenominators">Denominator Numbers:</label>
+            <input id="ratioDenominators" type="text" value="2,3,4,5,6,8,9,10,12,15,16,18,20" />
+          </div>
+          <div class="form-group">
+            <label for="ratioCount">Number of Exercises:</label>
+            <input id="ratioCount" type="number" value="12" min="1" max="50" />
           </div>
         </div>
       </div>
@@ -473,7 +495,75 @@ function generateExercises() {
     case 'parentheses':
       generateParenthesesExercises();
       break;
+    case 'ratios':
+      generateRatioExercises();
+      break;
   }
+}
+
+function generateRatioExercises() {
+  const numerators = parseNumbers('ratioNumerators');
+  const denominators = parseNumbers('ratioDenominators');
+  const count = parseInt(document.getElementById('ratioCount').value, 10);
+
+  for (let i = 0; i < count; i++) {
+    // Create the first fraction
+    let num1 = getRandom(numerators);
+    let den1 = getRandom(denominators);
+
+    // Ensure num1 < den1 for proper fractions (optional)
+    if (num1 >= den1) {
+      [num1, den1] = [den1, num1];
+    }
+
+    // Find the GCD to create equivalent fractions
+    const gcd = findGCD(num1, den1);
+
+    // Create equivalent fraction by simplifying or expanding
+    let num2, den2;
+
+    if (Math.random() < 0.5 && gcd > 1) {
+      // Simplify the fraction
+      num2 = num1 / gcd;
+      den2 = den1 / gcd;
+    } else {
+      // Expand the fraction
+      const multiplier = getRandom([2, 3, 4, 5]);
+      num2 = num1 * multiplier;
+      den2 = den1 * multiplier;
+    }
+
+    // Randomly decide which position to make blank
+    // 0: first numerator, 1: first denominator, 2: second numerator, 3: second denominator
+    const blankPos = Math.floor(Math.random() * 4);
+    let exerciseText = '';
+
+    switch(blankPos) {
+      case 0: // First numerator blank
+        exerciseText = `<span class="blank">___</span>/${den1} = ${num2}/${den2}`;
+        break;
+      case 1: // First denominator blank
+        exerciseText = `${num1}/<span class="blank">___</span> = ${num2}/${den2}`;
+        break;
+      case 2: // Second numerator blank
+        exerciseText = `${num1}/${den1} = <span class="blank">___</span>/${den2}`;
+        break;
+      case 3: // Second denominator blank
+        exerciseText = `${num1}/${den1} = ${num2}/<span class="blank">___</span>`;
+        break;
+    }
+
+    createExerciseElement(exerciseText);
+  }
+}
+
+function findGCD(a, b) {
+  while (b !== 0) {
+    let temp = b;
+    b = a % b;
+    a = temp;
+  }
+  return a;
 }
 
 function generateMultiplicationExercises() {
@@ -676,7 +766,7 @@ function downloadPDF() {
     const isLeftColumn = index % 2 === 0;
     const xPosition = isLeftColumn ? leftColumnX : rightColumnX;
 
-    doc.text(`${exercise.text}`, xPosition, yPosition);
+    doc.text(`${exercise.number}) ${exercise.text}`, xPosition, yPosition);
 
     // Move to next line only after right column
     if (!isLeftColumn) {
@@ -695,7 +785,7 @@ function downloadWord() {
     const leftExercise = currentExercisesData[i];
     const rightExercise = currentExercisesData[i + 1];
 
-    let line = `${leftExercise.number}. ${leftExercise.text}`;
+    let line = `${leftExercise.number}) ${leftExercise.text}`;
 
     // Pad to align right column (approximate spacing)
     const padding = 50 - line.length;
@@ -704,7 +794,7 @@ function downloadWord() {
     }
 
     if (rightExercise) {
-      line += `${rightExercise.text}`;
+      line += `${rightExercise.number}) ${rightExercise.text}`;
     }
 
     content += line + '\n\n';
@@ -736,7 +826,7 @@ function downloadTXT() {
     const leftExercise = currentExercisesData[i];
     const rightExercise = currentExercisesData[i + 1];
 
-    let line = `${leftExercise.number}. ${leftExercise.text}`;
+    let line = `${leftExercise.number}) ${leftExercise.text}`;
 
     // Pad to align right column (fixed width for text files)
     const padding = 45 - line.length;
@@ -747,7 +837,7 @@ function downloadTXT() {
     }
 
     if (rightExercise) {
-      line += `${rightExercise.text}`;
+      line += `${rightExercise.number}) ${rightExercise.text}`;
     }
 
     content += line + '\n\n';
